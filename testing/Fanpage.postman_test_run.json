@@ -1,0 +1,328 @@
+{
+	"id": "7f2003ba-55a8-4d71-b1e4-3481b8109b48",
+	"name": "Fanpage",
+	"timestamp": "2022-05-23T20:43:09.664Z",
+	"collection_id": "b3ceaf4e-f22d-4270-b3c6-6967dedf7109",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 10,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "dc8cc135-5539-4b33-99da-ed0e1b6e8e58",
+			"name": "0.1TestService",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/test/test",
+			"time": 181,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				181
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "f5217574-7bb0-4db1-995a-1b499c5d9e04",
+			"name": "1.0 Alle Alben auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/liste",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "96677a7f-65b1-4fce-9ea4-1143f04d2b21",
+			"name": "1.1 Album mit UUID auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "602b636f-650e-4d5b-a09a-38cc5b1301df",
+			"name": "1.2 Album mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ag",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "28df9066-2a87-477b-81df-deeca1a3fa8a",
+			"name": "2.0 Alle Lieder auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/liste",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "42821201-e124-4d66-b0dc-a6453d1a77a6",
+			"name": "2.1 Lied mit UUID auflilsten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0aa",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "5e5f8339-0fd9-4c1f-8b01-621ea60c09a0",
+			"name": "2.2 Lied mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
+			"time": 15,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d489aa2b-fcbe-46d7-8f14-dbbe84073034",
+			"name": "3.0 Alle Kuenstler auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/kuenstler/liste",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				55
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d9138a06-a8df-4daa-a7be-b6a8e2ccbe21",
+			"name": "3.1 Kuenstler mit UUID auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d91",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e1fe3c71-38bd-44b6-a4e0-bd74f380991f",
+			"name": "3.2 Kuenstler mit falscher UUID auflisten",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d10",
+			"time": 14,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 362,
+	"collection": {
+		"requests": [
+			{
+				"id": "dc8cc135-5539-4b33-99da-ed0e1b6e8e58",
+				"method": "GET"
+			},
+			{
+				"id": "f5217574-7bb0-4db1-995a-1b499c5d9e04",
+				"method": "GET"
+			},
+			{
+				"id": "96677a7f-65b1-4fce-9ea4-1143f04d2b21",
+				"method": "GET"
+			},
+			{
+				"id": "602b636f-650e-4d5b-a09a-38cc5b1301df",
+				"method": "GET"
+			},
+			{
+				"id": "28df9066-2a87-477b-81df-deeca1a3fa8a",
+				"method": "GET"
+			},
+			{
+				"id": "42821201-e124-4d66-b0dc-a6453d1a77a6",
+				"method": "GET"
+			},
+			{
+				"id": "5e5f8339-0fd9-4c1f-8b01-621ea60c09a0",
+				"method": "GET"
+			},
+			{
+				"id": "d489aa2b-fcbe-46d7-8f14-dbbe84073034",
+				"method": "GET"
+			},
+			{
+				"id": "d9138a06-a8df-4daa-a7be-b6a8e2ccbe21",
+				"method": "GET"
+			},
+			{
+				"id": "e1fe3c71-38bd-44b6-a4e0-bd74f380991f",
+				"method": "GET"
+			}
+		]
+	}
+}

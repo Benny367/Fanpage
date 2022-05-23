@@ -1,0 +1,10 @@
+# -----------------------------
+# Fanpage
+# author: Mehic Benjamin
+# date: 2022-05-22
+# version: 1.0
+# ------------------------------
+# --- files
+LiedJSON=/home/bzz/data/lied.json
+KuenstlerJSON=/home/bzz/data/kuenstler.json
+AlbumJSON=/home/bzz/data/album.json

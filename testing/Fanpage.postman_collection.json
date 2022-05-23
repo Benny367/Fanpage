@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "b3ceaf4e-f22d-4270-b3c6-6967dedf7109",
+		"name": "Fanpage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0.1TestService",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4db12426-a3d7-4f8f-a92b-2b5dc4332f89",
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/test/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"test",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.0 Alle Alben auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbf4ab1a-c947-4e79-a250-f35ccb9ff648",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Album mit UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1115c531-5b3d-4a8f-977e-6fed46eda725",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "43a5f5b4-32ac-4fec-97a3-6adca452f4ff"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Album mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50d31aa6-a43e-445a-874e-323d0c9bb573",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ag",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "43a5f5b4-32ac-4fec-97a3-6adca452f4ag"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 Alle Lieder auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5dc18c2-5b0e-4e07-9bf9-cafdfca203b3",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"lied",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Lied mit UUID auflilsten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "43588ac0-87a7-47ed-86b6-3b37a43a6547",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0aa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"lied",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Lied mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "89ac27b9-a9b5-4d7b-aa62-18e4aed837d2",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"lied",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0ff"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0 Alle Kuenstler auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a3d825d-2f64-47d5-b643-3857863173c0",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/kuenstler/liste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"kuenstler",
+						"liste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Kuenstler mit UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "213ff508-63d9-4514-a2a1-2de6d7a07229",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d91",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"lied",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "498b1e53-8f68-4180-929c-1ae1bea60d91"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Kuenstler mit falscher UUID auflisten",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b654876-9676-45be-b87e-d7ebd6d67ea6",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"lied",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "498b1e53-8f68-4180-929c-1ae1bea60d10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
