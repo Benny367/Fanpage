@@ -7,8 +7,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * test service
- *
+ * confirms the application runs
+ * @return  message
  */
 @Path("test")
 public class TestService {
@@ -19,7 +19,7 @@ public class TestService {
     public Response test() {
         return Response
                 .status(200)
-                .entity("Test erfolgreich")
+                .entity("Test successful")
                 .build();
     }
 }

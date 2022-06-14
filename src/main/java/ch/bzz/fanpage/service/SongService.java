@@ -1,7 +1,7 @@
 package ch.bzz.fanpage.service;
 
 import ch.bzz.fanpage.data.DataHandler;
-import ch.bzz.fanpage.model.Lied;
+import ch.bzz.fanpage.model.Song;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,42 +12,44 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Lieder
+ * services for reading, adding, changing and deleting song
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
  * @version : 1.0
  */
-@Path("lied")
-public class LiedService {
+@Path("song")
+public class SongService {
+
     /**
-     * liest eine Liste von Lieder
-     * @return liefert Lied als JSON
+     * reads a list of all songs
+     * @return  songs as JSON
      */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listLieder() {
-        List<Lied> liederListe = DataHandler.getInstance().readAllLieder();
+    public Response listSongs() {
+        List<Song> songList = DataHandler.getInstance().readAllSongs();
         return Response
                 .status(200)
-                .entity(liederListe)
+                .entity(songList)
                 .build();
     }
 
     /**
-     * liest ein Lied
-     * @return liefert Lied als JSON
+     * reads a song identified by the uuid
+     * @param songUUID
+     * @return song
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readLied(@QueryParam("uuid") String liedUUID) {
-        Lied lied = DataHandler.getInstance().readLiedByUUID(liedUUID);
-        if(lied != null){
+    public Response readSong(@QueryParam("uuid") String songUUID) {
+        Song song = DataHandler.getInstance().readSongByUUID(songUUID);
+        if(song != null){
             return Response
                     .status(200)
-                    .entity(lied)
+                    .entity(song)
                     .build();
         }
         else {

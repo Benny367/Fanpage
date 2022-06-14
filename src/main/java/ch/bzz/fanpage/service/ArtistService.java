@@ -1,7 +1,7 @@
 package ch.bzz.fanpage.service;
 
 import ch.bzz.fanpage.data.DataHandler;
-import ch.bzz.fanpage.model.Kuenstler;
+import ch.bzz.fanpage.model.Artist;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,42 +12,44 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Kuenstler
+ * services for reading, adding, changing and deleting artist
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
  * @version : 1.0
  */
-@Path("kuenstler")
-public class KuenstlerService {
+@Path("artist")
+public class ArtistService {
+
     /**
-     * liest eine Liste von Kuenstler
-     * @return liefert Kuenstler als JSON
+     * reads a list of all artists
+     * @return  artists as JSON
      */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listKuenstler() {
-        List<Kuenstler> kuenstlerListe = DataHandler.getInstance().readAllKuenstler();
+    public Response listArtists() {
+        List<Artist> artistList = DataHandler.getInstance().readAllArtists();
         return Response
                 .status(200)
-                .entity(kuenstlerListe)
+                .entity(artistList)
                 .build();
     }
 
     /**
-     * liest einen Kuenstler
-     * @return liefert Kuenstler als JSON
+     * reads a artist identified by the uuid
+     * @param artistUUID
+     * @return artist
      */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readKuenstler(@QueryParam("uuid") String kuenstlerUUID) {
-        Kuenstler kuenstler = DataHandler.getInstance().readProduktByUUID(kuenstlerUUID);
-        if(kuenstler != null){
+    public Response readArtist(@QueryParam("uuid") String artistUUID) {
+        Artist artist = DataHandler.getInstance().readArtistByUUID(artistUUID);
+        if(artist != null){
             return Response
                     .status(200)
-                    .entity(kuenstler)
+                    .entity(artist)
                     .build();
         }
         else {

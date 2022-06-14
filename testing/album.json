@@ -2,19 +2,19 @@
     {
         "albumUUID": "43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
         "name": "Goodbye & Good Riddance",
-        "publiziert": "07.07.2018",
-        "liederUUID": [{"liedUUID":"37be1529-ffd7-41c7-a62c-5735bfaafcda"}, {"liedUUID":"15720c54-7e6b-42aa-bdee-b12df9f51ce1"}]
+        "published": "07.07.2018",
+        "songUUID": [{"songUUID":"37be1529-ffd7-41c7-a62c-5735bfaafcda"}, {"songUUID":"15720c54-7e6b-42aa-bdee-b12df9f51ce1"}]
     },
     {
         "albumUUID": "ad9dedce-4f8b-4b1d-a0bf-3a950bcad604",
         "name": "Death Race for Love",
-        "publiziert": "12.03.2019",
-        "liederUUID": [{"liedUUID":"ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"}, {"liedUUID":"498b1e53-8f68-4180-929c-1ae1bea60d91"}]
+        "published": "12.03.2019",
+        "songUUID": [{"songUUID":"ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"}, {"songUUID":"498b1e53-8f68-4180-929c-1ae1bea60d91"}]
     },
     {
         "albumUUID": "7370bed9-b941-4448-bc52-ff1be2e6be69",
         "name": "Legends Never Die",
-        "publiziert": "15.06.2020",
-        "liederUUID": [{"liedUUID":"e33cc4de-9dca-44db-8569-dfb001b839be"}, {"liedUUID":"41e0eb77-930e-4bb1-95e4-d5d22440e85f"}]
+        "published": "15.06.2020",
+        "songUUID": [{"songUUID":"e33cc4de-9dca-44db-8569-dfb001b839be"}, {"songUUID":"41e0eb77-930e-4bb1-95e4-d5d22440e85f"}]
     }
 ]

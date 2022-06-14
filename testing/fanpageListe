@@ -5,6 +5,6 @@
 # version: 1.0
 # ------------------------------
 # --- files
-LiedJSON=/home/bzz/data/lied.json
-KuenstlerJSON=/home/bzz/data/kuenstler.json
-AlbumJSON=/home/bzz/data/album.json
+songJSON=/home/bzz/IdeaProjects/Fanpage/testing/song.json
+artistJSON=/home/bzz/IdeaProjects/Fanpage/testing/artist.json
+albumJSON=/home/bzz/IdeaProjects/Fanpage/testing/album.json

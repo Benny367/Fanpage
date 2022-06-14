@@ -3,16 +3,13 @@ package ch.bzz.fanpage.service;
 import ch.bzz.fanpage.data.DataHandler;
 import ch.bzz.fanpage.model.Album;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Services fürs Lesen, Erstellen, Ändern und Löschen von Alben
+ * services for reading, adding, changing and deleting album
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
@@ -20,24 +17,26 @@ import java.util.List;
  */
 @Path("album")
 public class AlbumService {
+
     /**
-     * liest eine Liste von Alben
-     * @return liefert Album als JSON
+     * reads a list of all albums
+     * @return  albums as JSON
      */
     @GET
-    @Path("liste")
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listAlben() {
-        List<Album> albumListe = DataHandler.getInstance().readAllAlben();
+    public Response listAlbums() {
+        List<Album> albumList = DataHandler.getInstance().readAllAlbums();
         return Response
                 .status(200)
-                .entity(albumListe)
+                .entity(albumList)
                 .build();
     }
 
     /**
-     * liest ein Album
-     * @return liefert Album als JSON
+     * reads a artist identified by the uuid
+     * @param albumUUID
+     * @return album
      */
     @GET
     @Path("read")

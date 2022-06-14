@@ -1,19 +1,22 @@
 package ch.bzz.fanpage.data;
 
 import ch.bzz.fanpage.model.Album;
-import ch.bzz.fanpage.model.Kuenstler;
-import ch.bzz.fanpage.model.Lied;
+import ch.bzz.fanpage.model.Artist;
+import ch.bzz.fanpage.model.Song;
 import ch.bzz.fanpage.service.Config;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * liest und schreibt daten ins JSON-File
+ * reads and writes the data in the JSON-files
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
@@ -21,24 +24,24 @@ import java.util.List;
  */
 public class DataHandler {
     private static DataHandler instance = null;
-    private List<Album> albumListe;
-    private List<Lied> liedListe;
-    private List<Kuenstler> kuenstlerListe;
+    private List<Album> albumList;
+    private List<Song> songList;
+    private List<Artist> artistList;
 
     /**
-     * privater Konstruktor für die Instanzierung
+     * private constructor defeats instantiation
      */
     private DataHandler() {
-        setAlbumListe(new ArrayList<>());
-        readAlbenJSON();
-        setLiedListe(new ArrayList<>());
-        readLiedJSON();
-        setKuenstlerListe(new ArrayList<>());
-        readKuenstlerJSON();
+        setAlbumList(new ArrayList<>());
+        readAlbumsJSON();
+        setSongList(new ArrayList<>());
+        readSongJSON();
+        setArtistList(new ArrayList<>());
+        readArtistJSON();
     }
 
     /**
-     * ermöglicht nur eine Instanz
+     * one instance only
      *
      * @return instance
      */
@@ -49,22 +52,22 @@ public class DataHandler {
     }
 
     /**
-     * liest alle Alben
-     * @return liste aller Alben
+     * reads all albums
+     * @return list of albums
      */
-    public List<Album> readAllAlben() {
-        return getAlbumListe();
+    public List<Album> readAllAlbums() {
+        return getAlbumList();
     }
 
     /**
-     * liest ein Album anhand seiner UUID
+     * reads a album by its uuid
      *
      * @param albumUUID
-     * @return Wert von Album
+     * @return the album (null = not found)
      */
     public Album readAlbumByUUID(String albumUUID) {
         Album album = null;
-        for (Album a : getAlbumListe()) {
+        for (Album a : getAlbumList()) {
             if (a.getAlbumUUID().equals(albumUUID)) {
                 album = a;
             }
@@ -73,66 +76,98 @@ public class DataHandler {
     }
 
     /**
-     * liest alle Lieder
-     * @return liste aller Lieder
+     * reads all songs
+     * @return list of songs
      */
-    public List<Lied> readAllLieder() {
-        return getLiedListe();
+    public List<Song> readAllSongs() {
+        return getSongList();
     }
 
     /**
-     * liest ein Lied anhand seiner UUID
+     * reads a album by its uuid
      *
-     * @param liedUUID
-     * @return Wert von Lied
+     * @param songUUID
+     * @return the song (null = not found)
      */
-    public Lied readLiedByUUID(String liedUUID) {
-        Lied lied = null;
-        for (Lied l : getLiedListe()) {
-            if (l.getLiedUUID().equals(liedUUID)) {
-                lied = l;
+    public Song readSongByUUID(String songUUID) {
+        Song song = null;
+        for (Song l : getSongList()) {
+            if (l.getSongUUID().equals(songUUID)) {
+                song = l;
             }
         }
-        return lied;
+        return song;
     }
 
     /**
-     * liest alle Kuenstler
-     * @return liste aller Kuenstler
+     * reads all artists
+     * @return list of artists
      */
-    public List<Kuenstler> readAllKuenstler() {
-        return getKuenstlerListe();
+    public List<Artist> readAllArtists() {
+        return getArtistList();
     }
 
     /**
-     * liest einen Kuenstler anhand seiner UUID
-     *
-     * @param kuenstlerUUID
-     * @return Wert von Kuenstler
+     * reads a artist by its uuid
+     * @param artistUUID
+     * @return the artist (null = not found)
      */
-    public Kuenstler readProduktByUUID(String kuenstlerUUID) {
-        Kuenstler kuenstler = null;
-        for (Kuenstler k : getKuenstlerListe()) {
-            if (k.getKuenstlerUUID().equals(kuenstlerUUID)) {
-                kuenstler = k;
+    public Artist readArtistByUUID(String artistUUID) {
+        Artist artist = null;
+        for (Artist k : getArtistList()) {
+            if (k.getArtistUUID().equals(artistUUID)) {
+                artist = k;
             }
         }
-        return kuenstler;
+        return artist;
     }
 
     /**
-     * liest das Album aus einem JSON-File
+     * inserts a new artist into the artistList
+     *
+     * @param artist the artist to be saved
      */
-    private void readAlbenJSON() {
+    public void insertArtist(Artist artist){
+        getArtistList().add(artist);
+        writeArtistJSON();
+    }
+
+    /**
+     * deletes a artist identified by the artistUUID
+     * @param artistUUID  the key
+     * @return  success=true/false
+     */
+    public boolean deleteArtist(String artistUUID) {
+        Artist artist = getInstance().readArtistByUUID(artistUUID);
+        if (artist != null) {
+            getArtistList().remove(artist);
+            writeArtistJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * updates the artistList
+     */
+    public void updateKuenstler() {
+        writeArtistJSON();
+    }
+
+    /**
+     * reads the albums from the JSON-file
+     */
+    private void readAlbumsJSON() {
         try {
-            String path = Config.getProperty("AlbumJSON");
+            String path = Config.getProperty("albumJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Album[] alben = objectMapper.readValue(jsonData, Album[].class);
-            for (Album a : alben) {
-                getAlbumListe().add(a);
+            Album[] albums = objectMapper.readValue(jsonData, Album[].class);
+            for (Album a : albums) {
+                getAlbumList().add(a);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -140,18 +175,18 @@ public class DataHandler {
     }
 
     /**
-     * liest den Inhalt aus einem JSON-File
+     * reads the songs from the JSON-file
      */
-    private void readLiedJSON() {
+    private void readSongJSON() {
         try {
-            String path = Config.getProperty("LiedJSON");
+            String path = Config.getProperty("songJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Lied[] lieder = objectMapper.readValue(jsonData, Lied[].class);
-            for (Lied l : lieder) {
-                getLiedListe().add(l);
+            Song[] songs = objectMapper.readValue(jsonData, Song[].class);
+            for (Song l : songs) {
+                getSongList().add(l);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -159,18 +194,18 @@ public class DataHandler {
     }
 
     /**
-     * liest die Produkte aus einem JSON-File
+     * reads the artist from the JSON-file
      */
-    private void readKuenstlerJSON() {
+    private void readArtistJSON() {
         try {
-            String path = Config.getProperty("KuenstlerJSON");
+            String path = Config.getProperty("artistJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Kuenstler[] kuenstler = objectMapper.readValue(jsonData, Kuenstler[].class);
-            for (Kuenstler k : kuenstler) {
-                getKuenstlerListe().add(k);
+            Artist[] artists = objectMapper.readValue(jsonData, Artist[].class);
+            for (Artist k : artists) {
+                getArtistList().add(k);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -178,56 +213,122 @@ public class DataHandler {
     }
 
     /**
-     * holt Albumliste
-     *
-     * @return Wert von Albumliste
+     * writes the songList to the JSON-file
      */
-    private List<Album> getAlbumListe() {
-        return albumListe;
+    private void writeSongJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String songPath = Config.getProperty("songJSON");
+        try {
+            fileOutputStream = new FileOutputStream(songPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getArtistList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
-     * setzt Albumliste
-     *
-     * @param albumListe
+     * writes the albumList to the JSON-file
      */
-    private void setAlbumListe(List<Album> albumListe) {
-        this.albumListe = albumListe;
+    private void writeAlbumJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String albumPath = Config.getProperty("albumJSON");
+        try {
+            fileOutputStream = new FileOutputStream(albumPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getArtistList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
-     * holt Liedliste
-     *
-     * @return Wert von Liedliste
+     * writes the artistList to the JSON-file
      */
-    private List<Lied> getLiedListe() {
-        return liedListe;
+    private void writeArtistJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String artistPath = Config.getProperty("artistJSON");
+        try {
+            fileOutputStream = new FileOutputStream(artistPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getArtistList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
-     * setzt Liedliste
+     * sets instance
      *
-     * @param liedListe
+     * @param instance the value to set
      */
-    private void setLiedListe(List<Lied> liedListe) {
-        this.liedListe = liedListe;
+    public static void setInstance(DataHandler instance) {
+        DataHandler.instance = instance;
     }
 
     /**
-     * holt Kuenstlerliste
+     * gets albumList
      *
-     * @return Wert von Kuenstlerliste
+     * @return albumList value of albumList
      */
-    public List<Kuenstler> getKuenstlerListe() {
-        return kuenstlerListe;
+    public List<Album> getAlbumList() {
+        return albumList;
     }
 
     /**
-     * setzt KuenstlerListe
+     * sets albumList
      *
-     * @param kuenstlerListe
+     * @param albumList the value to set
      */
-    public void setKuenstlerListe(List<Kuenstler> kuenstlerListe) {
-        this.kuenstlerListe = kuenstlerListe;
+    public void setAlbumList(List<Album> albumList) {
+        this.albumList = albumList;
+    }
+
+    /**
+     * gets songList
+     *
+     * @return songList value of songList
+     */
+    public List<Song> getSongList() {
+        return songList;
+    }
+
+    /**
+     * sets songList
+     *
+     * @param songList the value to set
+     */
+    public void setSongList(List<Song> songList) {
+        this.songList = songList;
+    }
+
+    /**
+     * gets artistList
+     *
+     * @return artistList value of artistList
+     */
+    public List<Artist> getArtistList() {
+        return artistList;
+    }
+
+    /**
+     * sets artistList
+     *
+     * @param artistList the value to set
+     */
+    public void setArtistList(List<Artist> artistList) {
+        this.artistList = artistList;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * konfiguriert die Web-Services und Propertiers
+ * configure the web services and properties
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-23
@@ -23,25 +23,25 @@ public class Config extends Application {
     private static Properties properties = null;
 
     /**
-     * alle Klassen definieren
+     * define all provider classes
      *
-     * @return Set von Klassen
+     * @return set of classes
      */
     @Override
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
         providers.add(AlbumService.class);
-        providers.add(KuenstlerService.class);
-        providers.add(LiedService.class);
+        providers.add(ArtistService.class);
+        providers.add(SongService.class);
         return providers;
     }
 
     /**
-     * holt property
+     * gets the value of a property
      *
-     * @param property
-     * @return Wert von property
+     * @param property the key of the property to be read
+     * @return the value of the property
      */
     public static String getProperty(String property) {
         if (Config.properties == null) {
@@ -54,8 +54,7 @@ public class Config extends Application {
     }
 
     /**
-     * liest das Properties-File
-     *
+     * reads the properties file
      */
     private static void readProperties() {
         InputStream inputStream;
@@ -70,9 +69,9 @@ public class Config extends Application {
     }
 
     /**
-     * setzt die Properties
+     * sets the properties
      *
-     * @param properties
+     * @param properties the value to set
      */
     private static void setProperties(Properties properties) {
         Config.properties = properties;

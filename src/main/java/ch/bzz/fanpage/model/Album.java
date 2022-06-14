@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Die Alben, in welche sich die Lieder befinden
+ * album
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
@@ -22,10 +22,10 @@ public class Album {
     private String name;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
-    private Date publiziert;
+    private Date published;
 
     @JsonIgnore
-    private List<Lied> lieder;
+    private List<Song> songs;
 
     /**
      * default Konstruktor
@@ -35,97 +35,97 @@ public class Album {
     }
 
     /**
-     * Konstruktor zur Instanzierung
+     * instance constructor
      *
      */
-    public Album(String albumUUID, String name, Date publiziert, List<Lied> lieder) {
+    public Album(String albumUUID, String name, Date published, List<Song> songs) {
         this.albumUUID = albumUUID;
         this.name = name;
-        this.publiziert = publiziert;
-        this.lieder = lieder;
+        this.published = published;
+        this.songs = songs;
     }
 
     /**
-     * setzt Lieder in Liste
+     * gets albumUUID
      *
-     * @param liederUUID
-     */
-    public void setLiederUUID(ArrayNode liederUUID){
-        setLieder(new ArrayList<>());
-        for (JsonNode jsonNode : liederUUID) {
-            getLieder().add(DataHandler.getInstance().readLiedByUUID(jsonNode.get("liedUUID").textValue()));
-        }
-    }
-
-    /**
-     * gibt albumUUID zurueck
-     *
-     * @return albumUUID wert von albumUUID
+     * @return albumUUID value of albumUUID
      */
     public String getAlbumUUID() {
         return albumUUID;
     }
 
     /**
-     * setzt albumUUID
+     * sets albumUUID
      *
-     * @param albumUUID setzt wert von albumUUID
+     * @param albumUUID the value to set
      */
     public void setAlbumUUID(String albumUUID) {
         this.albumUUID = albumUUID;
     }
 
     /**
-     * gibt name zurueck
+     * gets name
      *
-     * @return name wert von name
+     * @return name value of name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * setzt name
+     * sets name
      *
-     * @param name setzt wert von name
+     * @param name the value to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * gibt publiziert zurueck
+     * gets published
      *
-     * @return publiziert wert von publiziert
+     * @return published value of published
      */
-    public Date getPubliziert() {
-        return publiziert;
+    public Date getPublished() {
+        return published;
     }
 
     /**
-     * setzt publiziert
+     * sets published
      *
-     * @param publiziert setzt wert von publiziert
+     * @param published the value to set
      */
-    public void setPubliziert(Date publiziert) {
-        this.publiziert = publiziert;
+    public void setPublished(Date published) {
+        this.published = published;
     }
 
     /**
-     * gibt lieder zurueck
+     * gets songs
      *
-     * @return lieder wert von lieder
+     * @return songs value of songs
      */
-    public List<Lied> getLieder() {
-        return lieder;
+    public List<Song> getSongs() {
+        return songs;
     }
 
     /**
-     * setzt lieder
+     * sets songs
      *
-     * @param lieder setzt wert von lieder
+     * @param songs the value to set
      */
-    public void setLieder(List<Lied> lieder) {
-        this.lieder = lieder;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+    /**
+     * sets songUUID
+     *
+     * @param songUUID the value to set
+     */
+    public void setSongUUID(ArrayNode songUUID){
+        setSongs(new ArrayList<>());
+        for (JsonNode jsonNode : songUUID) {
+            getSongs().add(DataHandler.getInstance().readSongByUUID(jsonNode.get("songUUID").textValue()));
+        }
     }
 }

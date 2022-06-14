@@ -1,7 +1,7 @@
 package ch.bzz.fanpage.model;
 
 /**
- * User, bedient die Applikation
+ * User
  *
  * @author  : Mehic Benjamin
  * @date    : 2022-05-22
@@ -14,7 +14,7 @@ public class User {
     private String password;
 
     /**
-     * Konstruktor zur Instanzierung
+     * instance constructor
      *
      */
     public User(String userUUID, String username, String role, String password) {
@@ -25,72 +25,72 @@ public class User {
     }
 
     /**
-     * gibt userUUID zurueck
+     * gets userUUID
      *
-     * @return userUUID wert von userUUID
+     * @return userUUID value of userUUID
      */
     public String getUserUUID() {
         return userUUID;
     }
 
     /**
-     * setzt userUUID
+     * sets userUUID
      *
-     * @param userUUID setzt wert von userUUID
+     * @param userUUID the value to set
      */
     public void setUserUUID(String userUUID) {
         this.userUUID = userUUID;
     }
 
     /**
-     * gibt username zurueck
+     * gets username
      *
-     * @return username wert von username
+     * @return username value of username
      */
     public String getUsername() {
         return username;
     }
 
     /**
-     * setzt username
+     * sets username
      *
-     * @param username setzt wert von username
+     * @param username the value to set
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
     /**
-     * gibt role zurueck
+     * gets role
      *
-     * @return role wert von role
+     * @return role value of role
      */
     public String getRole() {
         return role;
     }
 
     /**
-     * setzt role
+     * sets role
      *
-     * @param role setzt wert von role
+     * @param role the value to set
      */
     public void setRole(String role) {
         this.role = role;
     }
 
     /**
-     * gibt password zurueck
+     * gets password
      *
-     * @return password wert von password
+     * @return password value of password
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * setzt password
+     * sets password
      *
-     * @param password setzt wert von password
+     * @param password the value to set
      */
     public void setPassword(String password) {
         this.password = password;
