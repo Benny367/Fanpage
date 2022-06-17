@@ -76,6 +76,39 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new album into the albumList
+     *
+     * @param album the album to be saved
+     */
+    public void insertAlbum(Album album){
+        getAlbumList().add(album);
+        writeAlbumJSON();
+    }
+
+    /**
+     * deletes a album identified by the albumUUID
+     * @param albumUUID  the key
+     * @return  success=true/false
+     */
+    public boolean deleteAlbum(String albumUUID) {
+        Album album = getInstance().readAlbumByUUID(albumUUID);
+        if (album != null) {
+            getAlbumList().remove(album);
+            writeAlbumJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * updates the albumList
+     */
+    public void updateAlbum() {
+        writeAlbumJSON();
+    }
+
+    /**
      * reads all songs
      * @return list of songs
      */
@@ -97,6 +130,39 @@ public class DataHandler {
             }
         }
         return song;
+    }
+
+    /**
+     * inserts a new song into the songList
+     *
+     * @param song the song to be saved
+     */
+    public void insertSong(Song song){
+        getSongList().add(song);
+        writeSongJSON();
+    }
+
+    /**
+     * deletes a song identified by the songUUID
+     * @param songUUID  the key
+     * @return  success=true/false
+     */
+    public boolean deleteSong(String songUUID) {
+        Song song = getInstance().readSongByUUID(songUUID);
+        if (song != null) {
+            getSongList().remove(song);
+            writeSongJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * updates the songList
+     */
+    public void updateSong() {
+        writeSongJSON();
     }
 
     /**
@@ -151,7 +217,7 @@ public class DataHandler {
     /**
      * updates the artistList
      */
-    public void updateKuenstler() {
+    public void updateArtist() {
         writeArtistJSON();
     }
 
@@ -284,6 +350,11 @@ public class DataHandler {
      * @return albumList value of albumList
      */
     public List<Album> getAlbumList() {
+        if (albumList == null) {
+            setAlbumList(new ArrayList<>());
+            readAlbumsJSON();
+        }
+
         return albumList;
     }
 
@@ -320,6 +391,11 @@ public class DataHandler {
      * @return artistList value of artistList
      */
     public List<Artist> getArtistList() {
+        if (artistList == null) {
+            setArtistList(new ArrayList<>());
+            readAllArtists();
+        }
+
         return artistList;
     }
 

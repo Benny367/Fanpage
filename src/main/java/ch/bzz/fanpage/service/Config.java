@@ -19,7 +19,7 @@ import java.util.Set;
  */
 @ApplicationPath("/resource")
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/Fanpage/testing/fanpageListe";
+    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/Fanpage/testing/fanpageListe.properties";
     private static Properties properties = null;
 
     /**
