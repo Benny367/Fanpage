@@ -2,7 +2,10 @@ package ch.bzz.fanpage.service;
 
 import ch.bzz.fanpage.data.DataHandler;
 import ch.bzz.fanpage.model.Album;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -54,6 +57,84 @@ public class AlbumService {
                     .status(404)
                     .build();
         }
+    }
+
+    /**
+     * inserts a new album
+     * @param albumUUID the uuid of the album
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertAlbum(
+            @Valid @BeanParam Album album,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("albumUUID") String albumUUID
+    ) {
+        album.setAlbumUUID(albumUUID);
+
+        DataHandler.getInstance().insertAlbum(album);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * updates a new album
+     * @param albumUUID the uuid of the album
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateAlbum(
+            @Valid @BeanParam Album album,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("albumUUID") String albumUUID
+    ) {
+        int httpStatus = 200;
+        Album oldAlbum = DataHandler.getInstance().readAlbumByUUID(album.getAlbumUUID());
+        if (oldAlbum != null) {
+            oldAlbum.setAlbumUUID(albumUUID);
+            oldAlbum.setName(album.getName());
+            oldAlbum.setPublished(album.getPublished());
+            oldAlbum.setSongs(album.getSongs());
+
+            DataHandler.getInstance().updateAlbum();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * deletes a album identified by its uuid
+     * @param albumUUID  the key
+     * @return  Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteAlbum(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String albumUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.getInstance().deleteAlbum(albumUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
     }
 }
 

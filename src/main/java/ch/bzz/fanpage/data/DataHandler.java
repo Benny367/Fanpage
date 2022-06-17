@@ -40,6 +40,12 @@ public class DataHandler {
         readArtistJSON();
     }
 
+    public void initLists() {
+        DataHandler.getInstance().setAlbumList(null);
+        DataHandler.getInstance().setSongList(null);
+        DataHandler.getInstance().setArtistList(null);
+    }
+
     /**
      * one instance only
      *
@@ -373,6 +379,11 @@ public class DataHandler {
      * @return songList value of songList
      */
     public List<Song> getSongList() {
+        if (songList == null) {
+            setSongList(new ArrayList<>());
+            readAllSongs();
+        }
+
         return songList;
     }
 

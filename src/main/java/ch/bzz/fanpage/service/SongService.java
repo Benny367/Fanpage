@@ -1,12 +1,13 @@
 package ch.bzz.fanpage.service;
 
 import ch.bzz.fanpage.data.DataHandler;
+import ch.bzz.fanpage.model.Artist;
 import ch.bzz.fanpage.model.Song;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -57,6 +58,83 @@ public class SongService {
                     .status(404)
                     .build();
         }
+    }
+
+    /**
+     * inserts a new song
+     * @param songUUID the uuid of the song
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertSong(
+            @Valid @BeanParam Song song,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("songUUID") String songUUID
+    ) {
+        song.setSongUUID(songUUID);
+
+        DataHandler.getInstance().insertSong(song);
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * updates a new song
+     * @param songUUID the uuid of the song
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateSong(
+            @Valid @BeanParam Song song,
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("songUUID") String songUUID
+    ) {
+        int httpStatus = 200;
+        Song oldSong = DataHandler.getInstance().readSongByUUID(song.getSongUUID());
+        if (oldSong != null) {
+            oldSong.setSongUUID(songUUID);
+            oldSong.setName(song.getName());
+            oldSong.setPublished(song.getPublished());
+
+            DataHandler.getInstance().updateSong();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * deletes a song identified by its uuid
+     * @param songUUID  the key
+     * @return  Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteSong(
+            @NotEmpty
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String songUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.getInstance().deleteSong(songUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
     }
 }
 

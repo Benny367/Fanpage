@@ -5,7 +5,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,13 +23,24 @@ import java.util.List;
  * @version : 1.0
  */
 public class Album {
+
+    @FormParam("albumUUID")
+    @NotEmpty
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String albumUUID;
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min=5, max=40)
     private String name;
 
+    @Pattern(regexp = "/^(19|20)[\\d]{2,2}$/")
+    @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     private Date published;
 
     @JsonIgnore
+    @NotNull
     private List<Song> songs;
 
     /**
