@@ -54,26 +54,23 @@ public class AlbumService {
         }
         else {
             return Response
-                    .status(404)
+                    .status(410)
                     .build();
         }
     }
 
     /**
      * inserts a new album
-     * @param albumUUID the uuid of the album
+     * @param album model to create
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertAlbum(
-            @Valid @BeanParam Album album,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("albumUUID") String albumUUID
+            @Valid @BeanParam Album album
     ) {
-        album.setAlbumUUID(albumUUID);
+        album.setAlbumUUID(album.getAlbumUUID());
 
         DataHandler.getInstance().insertAlbum(album);
         return Response
@@ -84,22 +81,19 @@ public class AlbumService {
 
     /**
      * updates a new album
-     * @param albumUUID the uuid of the album
+     * @param album model to update
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateAlbum(
-            @Valid @BeanParam Album album,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("albumUUID") String albumUUID
+            @Valid @BeanParam Album album
     ) {
         int httpStatus = 200;
         Album oldAlbum = DataHandler.getInstance().readAlbumByUUID(album.getAlbumUUID());
         if (oldAlbum != null) {
-            oldAlbum.setAlbumUUID(albumUUID);
+            oldAlbum.setAlbumUUID(album.getAlbumUUID());
             oldAlbum.setName(album.getName());
             oldAlbum.setPublished(album.getPublished());
             oldAlbum.setSongs(album.getSongs());

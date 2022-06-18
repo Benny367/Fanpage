@@ -1,20 +1,23 @@
 {
 	"info": {
-		"_postman_id": "b3ceaf4e-f22d-4270-b3c6-6967dedf7109",
+		"_postman_id": "63084274-084d-4815-a8ec-136b60dd10f2",
 		"name": "Fanpage",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "0.1TestService",
+			"name": "0.1 TestService",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "4db12426-a3d7-4f8f-a92b-2b5dc4332f89",
 						"exec": [
-							"pm.test(\"Status test\", function(){",
+							"pm.test(\"Status code is 200\", function(){",
 							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
 							"})"
 						],
 						"type": "text/javascript"
@@ -42,16 +45,20 @@
 			"response": []
 		},
 		{
-			"name": "1.0 Alle Alben auflisten",
+			"name": "1.0 List all albums",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "dbf4ab1a-c947-4e79-a250-f35ccb9ff648",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
+							"pm.test(\"Status code is 200\", function(){",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -61,7 +68,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/liste",
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -71,23 +78,27 @@
 						"Fanpage-1.0-Fanpage",
 						"resource",
 						"album",
-						"liste"
+						"list"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "1.1 Album mit UUID auflisten",
+			"name": "1.1 List album with UUID",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "1115c531-5b3d-4a8f-977e-6fed46eda725",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
+							"pm.test(\"Status code is 200\", function(){",
 							"    pm.response.to.have.status(200);",
-							"});"
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -120,16 +131,19 @@
 			"response": []
 		},
 		{
-			"name": "1.2 Album mit falscher UUID auflisten",
+			"name": "1.1.1 List album with non existent UUID",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "50d31aa6-a43e-445a-874e-323d0c9bb573",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});"
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -162,16 +176,19 @@
 			"response": []
 		},
 		{
-			"name": "2.0 Alle Lieder auflisten",
+			"name": "1.1.2 List album with wrong formal UUID",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "d5dc18c2-5b0e-4e07-9bf9-cafdfca203b3",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -181,7 +198,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/liste",
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=L",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -190,49 +207,13 @@
 					"path": [
 						"Fanpage-1.0-Fanpage",
 						"resource",
-						"lied",
-						"liste"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "2.1 Lied mit UUID auflilsten",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "43588ac0-87a7-47ed-86b6-3b37a43a6547",
-						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0aa",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Fanpage-1.0-Fanpage",
-						"resource",
-						"lied",
+						"album",
 						"read"
 					],
 					"query": [
 						{
 							"key": "uuid",
-							"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"
+							"value": "L"
 						}
 					]
 				}
@@ -240,16 +221,895 @@
 			"response": []
 		},
 		{
-			"name": "2.2 Lied mit falscher UUID auflisten",
+			"name": "1.2 Update album",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "89ac27b9-a9b5-4d7b-aa62-18e4aed837d2",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});"
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2.1 Update album with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be10",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2.2 Update album with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2.3 Update album with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2.4 Update album with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons Fighting Demons Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2.5 Update album with wrong formal published",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "2020-12-12",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3 Delete album with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3.1 Delete album with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3.2 Delete album with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=L",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "L"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4 Create album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "7370bed9-b941-4448-bc52-ff1be2e6be69",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Legends Never Die",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "15.06.2020",
+							"type": "text"
+						},
+						{
+							"key": "songUUID",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4.1 Create album with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.03.2019",
+							"type": "text"
+						},
+						{
+							"key": "songs",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4.2 Create album with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "ad9dedce-4f8b-4b1d-a0bf-3a950bcad610",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.03.2019",
+							"type": "text"
+						},
+						{
+							"key": "songs",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4.3 Create album with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "ad9dedce-4f8b-4b1d-a0bf-3a950bcad610",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons Fighting Demons Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.03.2019",
+							"type": "text"
+						},
+						{
+							"key": "songs",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4.4 Create album with wrong formal published",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "albumUUID",
+							"value": "ad9dedce-4f8b-4b1d-a0bf-3a950bcad610",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Fighting Demons",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "2019-12-12",
+							"type": "text"
+						},
+						{
+							"key": "songs",
+							"value": "{\"37be1529-ffd7-41c7-a62c-5735bfaafcda\", \"41e0eb77-930e-4bb1-95e4-d5d22440e85f\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"album",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.0 List all artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -259,7 +1119,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -268,7 +1128,92 @@
 					"path": [
 						"Fanpage-1.0-Fanpage",
 						"resource",
-						"lied",
+						"artist",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 List artist with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=69660870-84bb-4487-ae6c-396572ebf8e2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "69660870-84bb-4487-ae6c-396572ebf8e2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1.1 List artist with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
 						"read"
 					],
 					"query": [
@@ -282,16 +1227,19 @@
 			"response": []
 		},
 		{
-			"name": "3.0 Alle Kuenstler auflisten",
+			"name": "2.1.2 List artist with wrong formal UUID",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "3a3d825d-2f64-47d5-b643-3857863173c0",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -301,7 +1249,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/kuenstler/liste",
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=L",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -310,49 +1258,13 @@
 					"path": [
 						"Fanpage-1.0-Fanpage",
 						"resource",
-						"kuenstler",
-						"liste"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "3.1 Kuenstler mit UUID auflisten",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "213ff508-63d9-4514-a2a1-2de6d7a07229",
-						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d91",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Fanpage-1.0-Fanpage",
-						"resource",
-						"lied",
+						"artist",
 						"read"
 					],
 					"query": [
 						{
 							"key": "uuid",
-							"value": "498b1e53-8f68-4180-929c-1ae1bea60d91"
+							"value": "L"
 						}
 					]
 				}
@@ -360,16 +1272,1466 @@
 			"response": []
 		},
 		{
-			"name": "3.2 Kuenstler mit falscher UUID auflisten",
+			"name": "2.2 Update artist",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "8b654876-9676-45be-b87e-d7ebd6d67ea6",
 						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});"
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.1 Update artist with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff8",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.2 Update artist with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.3 Update artist with to short firstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.4 Update artist with to long firstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan Jordan Jordan Jordan Jordan Jordan Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.5 Update artist with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.6 Update artist with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter Carter Carter Carter Carter Carter Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.7 Update artist with to short artistName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.8 Update artist with to long artistName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti Playboi Carti Playboi Carti Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1995",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2.9 Update artist with wrong formal dateOfBirth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "2002-12-12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 Delete artist with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=737f2009-38e6-4a06-85c7-1df8166caff2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.1 Delete artist with wrong non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=69660870-84bb-4487-ae6c-396572ebf8e1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "69660870-84bb-4487-ae6c-396572ebf8e1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3.2 Delete artist with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=L",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "L"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4 Create artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.1 Create artist with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.2 Create artist with to short firstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.3 Create artist with to long firstName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan Jordan Jordan Jordan Jordan Jordan Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.4 Create artist with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.5 Create artist with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter Carter Carter Carter Carter Carter Carter  Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.6 Create artist with to short artistName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.7 Create artist with to long artistName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti Playboi Carti Playboi Carti Playboi Carti ",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "13.08.1996",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4.8 Create artist with wrong formal dateOfBirth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "artistUUID",
+							"value": "737f2009-38e6-4a06-85c7-1df8166caff2",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Jordan",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Carter",
+							"type": "text"
+						},
+						{
+							"key": "artistName",
+							"value": "Playboi Carti",
+							"type": "text"
+						},
+						{
+							"key": "dateOfBirth",
+							"value": "1996-12-12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"artist",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.0 List all songs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
 						],
 						"type": "text/javascript"
 					}
@@ -379,7 +2741,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/lied/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d10",
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/list",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -388,7 +2750,92 @@
 					"path": [
 						"Fanpage-1.0-Fanpage",
 						"resource",
-						"lied",
+						"song",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 List song with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is application/json\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).",
+							"        to.eql('application/json');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1.1 List song with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
 						"read"
 					],
 					"query": [
@@ -400,7 +2847,853 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "3.1.2 List song with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=L",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "L"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Update song",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams PT.2",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.12.2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.1 Update song with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcd1",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams PT.2",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.12.2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.2 Update song with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams PT.2",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.12.2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.3 Update song with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.12.2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.4 Update song with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams PT.2 Lucid Dreams PT.2 Lucid Dreams PT.2",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "12.12.2020",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2.5 Update song with wrong formal published",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams PT.2",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "2020-12-12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3 Delete song with UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0aa",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3.1 Delete song with non existent UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 410\", function(){",
+							"    pm.response.to.have.status(410);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"type": "text",
+						"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcdd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcdd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.3.2 Delete song with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "uuid",
+						"type": "text",
+						"value": "ad4ca80f-ebe3-4439-8b2c-8b290339c0aa"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=L",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "L"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4 Create song",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/plain\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "07.07.2018",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4.1 Create song with wrong formal UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "07.07.2018",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4.2 Create song with to short name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "L",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "07.07.2018",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4.3 Create song with to long name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams Lucid Dreams Lucid Dreams Lucid Dreams",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "07.07.2018",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.4.4 Create song with wrong formal published",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function(){",
+							"    pm.response.to.have.status(400);",
+							"})",
+							"",
+							"pm.test(\"Content-Type header is text/html\", () =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/html');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "songUUID",
+							"value": "37be1529-ffd7-41c7-a62c-5735bfaafcda",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Lucid Dreams",
+							"type": "text"
+						},
+						{
+							"key": "published",
+							"value": "2012-12-12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Fanpage-1.0-Fanpage",
+						"resource",
+						"song",
+						"create"
+					]
+				}
+			},
+			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

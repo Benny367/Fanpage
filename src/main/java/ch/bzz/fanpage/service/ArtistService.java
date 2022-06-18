@@ -1,7 +1,6 @@
 package ch.bzz.fanpage.service;
 
 import ch.bzz.fanpage.data.DataHandler;
-import ch.bzz.fanpage.model.Album;
 import ch.bzz.fanpage.model.Artist;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -55,26 +54,23 @@ public class ArtistService {
         }
         else {
             return Response
-                    .status(404)
+                    .status(410)
                     .build();
         }
     }
 
     /**
      * inserts a new artist
-     * @param artistUUID the uuid of the artist
+     * @param artist model to create
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertArtist(
-            @Valid @BeanParam Artist artist,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("artistUUID") String artistUUID
+            @Valid @BeanParam Artist artist
     ) {
-        artist.setArtistUUID(artistUUID);
+        artist.setArtistUUID(artist.getArtistUUID());
 
         DataHandler.getInstance().insertArtist(artist);
         return Response
@@ -85,22 +81,18 @@ public class ArtistService {
 
     /**
      * updates a new artist
-     * @param artistUUID the uuid of the artist
+     * @param artist model to update
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateArtist(
-            @Valid @BeanParam Artist artist,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("artistUUID") String artistUUID
+            @Valid @BeanParam Artist artist
     ) {
         int httpStatus = 200;
         Artist oldArtist = DataHandler.getInstance().readArtistByUUID(artist.getArtistUUID());
         if (oldArtist != null) {
-            oldArtist.setArtistUUID(artistUUID);
             oldArtist.setFirstName(artist.getFirstName());
             oldArtist.setName(artist.getName());
             oldArtist.setArtistName(artist.getArtistName());

@@ -297,7 +297,7 @@ public class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(songPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, getArtistList());
+            objectWriter.writeValue(fileWriter, getSongList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -316,7 +316,7 @@ public class DataHandler {
         try {
             fileOutputStream = new FileOutputStream(albumPath);
             fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
-            objectWriter.writeValue(fileWriter, getArtistList());
+            objectWriter.writeValue(fileWriter, getAlbumList());
         } catch (IOException ex) {
             ex.printStackTrace();
         }

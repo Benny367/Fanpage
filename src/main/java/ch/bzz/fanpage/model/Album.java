@@ -3,6 +3,7 @@ package ch.bzz.fanpage.model;
 import ch.bzz.fanpage.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -34,13 +35,12 @@ public class Album {
     @Size(min=5, max=40)
     private String name;
 
-    @Pattern(regexp = "/^(19|20)[\\d]{2,2}$/")
-    @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
-    private Date published;
+    @FormParam("published")
+    @NotEmpty
+    @Pattern(regexp = "[0-9]{2}.[0-9]{2}.[0-9]{4}")
+    private String published;
 
     @JsonIgnore
-    @NotNull
     private List<Song> songs;
 
     /**
@@ -54,7 +54,7 @@ public class Album {
      * instance constructor
      *
      */
-    public Album(String albumUUID, String name, Date published, List<Song> songs) {
+    public Album(String albumUUID, String name, String published, List<Song> songs) {
         this.albumUUID = albumUUID;
         this.name = name;
         this.published = published;
@@ -102,7 +102,7 @@ public class Album {
      *
      * @return published value of published
      */
-    public Date getPublished() {
+    public String getPublished() {
         return published;
     }
 
@@ -111,7 +111,7 @@ public class Album {
      *
      * @param published the value to set
      */
-    public void setPublished(Date published) {
+    public void setPublished(String published) {
         this.published = published;
     }
 
@@ -133,15 +133,16 @@ public class Album {
         this.songs = songs;
     }
 
-    /**
-     * sets songUUID
-     *
-     * @param songUUID the value to set
+    /*
+     * sets songs
+     * @param songs
      */
-    public void setSongUUID(ArrayNode songUUID){
+    @JsonProperty("song")
+    @FormParam("songs")
+    public void setSongsUUID(List<String> songs) {
         setSongs(new ArrayList<>());
-        for (JsonNode jsonNode : songUUID) {
-            getSongs().add(DataHandler.getInstance().readSongByUUID(jsonNode.get("songUUID").textValue()));
+        for (String s : songs) {
+            this.songs.add(DataHandler.getInstance().readSongByUUID(s));
         }
     }
 }

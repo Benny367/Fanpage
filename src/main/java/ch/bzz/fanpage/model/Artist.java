@@ -18,11 +18,12 @@ import java.util.Date;
  */
 public class Artist {
 
-    @FormParam("albumUUID")
+    @FormParam("artistUUID")
+    @NotEmpty
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String artistUUID;
 
-    @FormParam("name")
+    @FormParam("firstName")
     @NotEmpty
     @Size(min=5, max=40)
     private String firstName;
@@ -32,13 +33,15 @@ public class Artist {
     @Size(min=5, max=40)
     private String name;
 
-    @FormParam("name")
+    @FormParam("artistName")
     @NotEmpty
     @Size(min=5, max=40)
     private String artistName;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
-    private Date dateOfBirth;
+    @FormParam("dateOfBirth")
+    @NotEmpty
+    @Pattern(regexp = "[0-9]{2}.[0-9]{2}.[0-9]{4}")
+    private String dateOfBirth;
 
     /**
      * default constructor
@@ -51,7 +54,7 @@ public class Artist {
      * instance constructor
      *
      */
-    public Artist(String artistUUID, String firstName, String name, String artistName, Date dateOfBirth) {
+    public Artist(String artistUUID, String firstName, String name, String artistName, String dateOfBirth) {
         this.artistUUID = artistUUID;
         this.firstName = firstName;
         this.name = name;
@@ -136,7 +139,7 @@ public class Artist {
      *
      * @return dateOfBirth value of dateOfBirth
      */
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -145,7 +148,7 @@ public class Artist {
      *
      * @param dateOfBirth the value to set
      */
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }

@@ -1,12 +1,14 @@
 package ch.bzz.fanpage.model;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -27,9 +29,11 @@ public class Song {
     @Size(min=5, max=40)
     private String name;
 
-    @Pattern(regexp = "/^(19|20)[\\d]{2,2}$/")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
-    private Date published;
+    @FormParam("published")
+    @NotEmpty
+    @Size(min = 10, max = 10)
+    @Pattern(regexp = "[0-9]{2}.[0-9]{2}.[0-9]{4}")
+    private String published;
 
     /**
      * default Konstruktor
@@ -42,7 +46,7 @@ public class Song {
      * instance constructor
      *
      */
-    public Song(String songUUID, String name, Date published) {
+    public Song(String songUUID, String name, String published) {
         this.songUUID = songUUID;
         this.name = name;
         this.published = published;
@@ -89,7 +93,7 @@ public class Song {
      *
      * @return published value of published
      */
-    public Date getPublished() {
+    public String getPublished() {
         return published;
     }
 
@@ -98,7 +102,7 @@ public class Song {
      *
      * @param published the value to set
      */
-    public void setPublished(Date published) {
+    public void setPublished(String published) {
         this.published = published;
     }
 }

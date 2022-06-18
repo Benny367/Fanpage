@@ -55,26 +55,23 @@ public class SongService {
         }
         else {
             return Response
-                    .status(404)
+                    .status(410)
                     .build();
         }
     }
 
     /**
      * inserts a new song
-     * @param songUUID the uuid of the song
+     * @param song model to create
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSong(
-            @Valid @BeanParam Song song,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("songUUID") String songUUID
+            @Valid @BeanParam Song song
     ) {
-        song.setSongUUID(songUUID);
+        song.setSongUUID(song.getSongUUID());
 
         DataHandler.getInstance().insertSong(song);
         return Response
@@ -85,22 +82,19 @@ public class SongService {
 
     /**
      * updates a new song
-     * @param songUUID the uuid of the song
+     * @param song model to update
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateSong(
-            @Valid @BeanParam Song song,
-            @NotEmpty
-            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("songUUID") String songUUID
+            @Valid @BeanParam Song song
     ) {
         int httpStatus = 200;
         Song oldSong = DataHandler.getInstance().readSongByUUID(song.getSongUUID());
         if (oldSong != null) {
-            oldSong.setSongUUID(songUUID);
+            oldSong.setSongUUID(song.getSongUUID());
             oldSong.setName(song.getName());
             oldSong.setPublished(song.getPublished());
 

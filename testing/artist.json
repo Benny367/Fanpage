@@ -1,16 +1,13 @@
-[
-    {
-        "artistUUID": "69660870-84bb-4487-ae6c-396572ebf8e2",
-        "firstName": "Jarad",
-        "name": "Higgins",
-        "artistName": "Juice WRLD",
-        "dateOfBirth": "02.12.1998"
-    },
-    {
-        "artistUUID": "737f2009-38e6-4a06-85c7-1df8166caff2",
-        "firstName": "Jordan",
-        "name": "Carter",
-        "artistName": "Playboi Carti",
-        "dateOfBirth": "13.08.1996"
-    }
-]
+[ {
+  "artistUUID" : "69660870-84bb-4487-ae6c-396572ebf8e2",
+  "firstName" : "Jarad",
+  "name" : "Higgins",
+  "artistName" : "Juice WRLD",
+  "dateOfBirth" : "02.12.1998"
+}, {
+  "artistUUID" : "737f2009-38e6-4a06-85c7-1df8166caff2",
+  "firstName" : "Jordan",
+  "name" : "Carter",
+  "artistName" : "Playboi Carti",
+  "dateOfBirth" : "13.08.1996"
+} ]
