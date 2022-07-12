@@ -4,6 +4,7 @@ import ch.bzz.fanpage.data.DataHandler;
 import ch.bzz.fanpage.model.Artist;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -25,6 +26,7 @@ public class ArtistService {
      * reads a list of all artists
      * @return  artists as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +43,7 @@ public class ArtistService {
      * @param artistUUID
      * @return artist
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,6 +67,7 @@ public class ArtistService {
      * @param artist model to create
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -84,6 +88,7 @@ public class ArtistService {
      * @param artist model to update
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -113,6 +118,7 @@ public class ArtistService {
      * @param artistUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

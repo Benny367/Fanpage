@@ -1,5 +1,12 @@
 package ch.bzz.fanpage.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+import java.util.List;
+
 /**
  * User
  *
@@ -8,20 +15,60 @@ package ch.bzz.fanpage.model;
  * @verison : 1.0
  * */
 public class User {
+
+    @FormParam("userUUID")
+    @Pattern(regexp = "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89ABab][0-9a-fA-F]{3}-[0-9a-fA-F]{12}")
     private String userUUID;
-    private String username;
-    private String role;
+
+    @FormParam("userName")
+    @NotEmpty
+    @Size(min = 3,max = 30)
+    private String userName;
+
+    @FormParam("userRole")
+    @NotEmpty
+    @Size(min = 3,max = 30)
+    private String userRole;
+
+    @FormParam("password")
+    @NotEmpty
+    @Size(min = 8,max = 30)
     private String password;
+
+    @FormParam("words")
+    @NotEmpty
+    private List<String> words;
 
     /**
      * instance constructor
      *
      */
-    public User(String userUUID, String username, String role, String password) {
+    public User(String userUUID, String userName, String userRole, String password, List<String> words) {
         this.userUUID = userUUID;
-        this.username = username;
-        this.role = role;
+        this.userName = userName;
+        this.userRole = userRole;
         this.password = password;
+        this.words = words;
+    }
+
+    /**
+     * empty constructor
+     */
+    public User() {
+    }
+
+    /**
+     * Used to logon the user
+     */
+    public void logon(){
+
+    }
+
+    /**
+     * Used to logoff the user
+     */
+    public void logoff(){
+
     }
 
     /**
@@ -38,44 +85,47 @@ public class User {
      *
      * @param userUUID the value to set
      */
-    public void setUserUUID(String userUUID) {
+    public User setUserUUID(String userUUID) {
         this.userUUID = userUUID;
+        return this;
     }
 
     /**
-     * gets username
+     * gets userName
      *
-     * @return username value of username
+     * @return userName value of userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * sets username
+     * sets userName
      *
-     * @param username the value to set
+     * @param userName the value to set
      */
-    public void setUsername(String username) {
-        this.username = username;
+    public User setUserName(String userName) {
+        this.userName = userName;
+        return this;
     }
 
     /**
-     * gets role
+     * gets userRole
      *
-     * @return role value of role
+     * @return userRole value of userRole
      */
-    public String getRole() {
-        return role;
+    public String getUserRole() {
+        return userRole;
     }
 
     /**
-     * sets role
+     * sets userRole
      *
-     * @param role the value to set
+     * @param userRole the value to set
      */
-    public void setRole(String role) {
-        this.role = role;
+    public User setUserRole(String userRole) {
+        this.userRole = userRole;
+        return this;
     }
 
     /**
@@ -92,7 +142,27 @@ public class User {
      *
      * @param password the value to set
      */
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    /**
+     * gets words
+     *
+     * @return words value of words
+     */
+    public List<String> getWords() {
+        return words;
+    }
+
+    /**
+     * sets words
+     *
+     * @param words the value to set
+     */
+    public User setWords(List<String> words) {
+        this.words = words;
+        return this;
     }
 }

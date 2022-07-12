@@ -5,6 +5,7 @@ import ch.bzz.fanpage.model.Artist;
 import ch.bzz.fanpage.model.Song;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
@@ -26,6 +27,7 @@ public class SongService {
      * reads a list of all songs
      * @return  songs as JSON
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -42,6 +44,7 @@ public class SongService {
      * @param songUUID
      * @return song
      */
+    @RolesAllowed({"admin", "user"})
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -65,6 +68,7 @@ public class SongService {
      * @param song model to create
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -85,6 +89,7 @@ public class SongService {
      * @param song model to update
      * @return Response
      */
+    @RolesAllowed({"admin", "user"})
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
@@ -113,6 +118,7 @@ public class SongService {
      * @param songUUID  the key
      * @return  Response
      */
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

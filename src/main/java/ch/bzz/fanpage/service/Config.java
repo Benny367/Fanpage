@@ -1,6 +1,8 @@
 package ch.bzz.fanpage.service;
 
 
+import ch.bzz.fanpage.util.AuthorizationFilter;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.io.FileInputStream;
@@ -34,6 +36,8 @@ public class Config extends Application {
         providers.add(AlbumService.class);
         providers.add(ArtistService.class);
         providers.add(SongService.class);
+        providers.add(UserService.class);
+        providers.add(AuthorizationFilter.class);
         return providers;
     }
 
