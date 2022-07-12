@@ -9,5 +9,17 @@
   "firstName" : "Jordan",
   "name" : "Carter",
   "artistName" : "Playboi Carti",
+  "dateOfBirth" : "13.08.1995"
+}, {
+  "artistUUID" : "737f2009-38e6-4a06-85c7-1df8166caff2",
+  "firstName" : "Jordan",
+  "name" : "Carter",
+  "artistName" : "Playboi Carti",
+  "dateOfBirth" : "13.08.1995"
+}, {
+  "artistUUID" : "737f2009-38e6-4a06-85c7-1df8166caff2",
+  "firstName" : "Jordan",
+  "name" : "Carter",
+  "artistName" : "Playboi Carti",
   "dateOfBirth" : "13.08.1996"
 } ]

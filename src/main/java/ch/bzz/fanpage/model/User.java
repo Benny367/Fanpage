@@ -23,7 +23,7 @@ public class User {
     @FormParam("userName")
     @NotEmpty
     @Size(min = 3,max = 30)
-    private String userName;
+    private String username;
 
     @FormParam("userRole")
     @NotEmpty
@@ -32,7 +32,7 @@ public class User {
 
     @FormParam("password")
     @NotEmpty
-    @Size(min = 8,max = 30)
+    @Size(min = 5,max = 30)
     private String password;
 
     @FormParam("words")
@@ -43,9 +43,9 @@ public class User {
      * instance constructor
      *
      */
-    public User(String userUUID, String userName, String userRole, String password, List<String> words) {
+    public User(String userUUID, String username, String userRole, String password, List<String> words) {
         this.userUUID = userUUID;
-        this.userName = userName;
+        this.username = username;
         this.userRole = userRole;
         this.password = password;
         this.words = words;
@@ -96,16 +96,16 @@ public class User {
      * @return userName value of userName
      */
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     /**
      * sets userName
      *
-     * @param userName the value to set
+     * @param username the value to set
      */
-    public User setUserName(String userName) {
-        this.userName = userName;
+    public User setUserName(String username) {
+        this.username = username;
         return this;
     }
 

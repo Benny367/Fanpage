@@ -1,21 +1,21 @@
 [   {
   "userUUID" : "7c7ea8ed-2f4a-4943-9a76-bd19bdf984cf",
-  "userName" : "ammanna",
+  "userName" : "benny",
   "userRole" : "admin",
-  "password" : "geheim",
-  "words": ["Hund", "Katze", "Maus", "Elefant", "Tiger"]
+  "password" : "1234b",
+  "words": ["Ronaldo", "Son", "Messi", "Pogba", "Kante"]
 },
   {
     "userUUID" : "8df9f14a-7eff-4c81-8153-172a86c08fe5",
-    "userName" : "ronaldo",
+    "userName" : "nahro",
     "userRole" : "user",
-    "password" : "passwort",
-    "words": ["Yeti", "Wolpertinger", "Sasquatch", "Nessi", "Bigfoot"]
+    "password" : "1234n",
+    "words": ["Fussball", "Handball", "Volleyball", "Golf", "Tennis"]
   },
   {
     "userUUID" : "8df9f14a-7eff-4c81-8153-172a86c08fe5",
-    "userName" : "musterh",
+    "userName" : "erion",
     "userRole" : "guest",
-    "password" : "passwort",
-    "words": ["Kopf", "Bael", "sal", "Gesse", "plogi"]
+    "password" : "1234e",
+    "words": ["Uzi", "Playboi", "Juice", "ASAP", "DaBaby"]
   } ]

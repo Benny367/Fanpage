@@ -1,18 +1,18 @@
 {
-	"id": "15ce04d0-3efd-44ec-9a6d-d0f96137ea68",
+	"id": "8e3c39e7-a048-4c56-b733-5f4bb580420d",
 	"name": "Fanpage",
-	"timestamp": "2022-06-18T15:04:20.140Z",
+	"timestamp": "2022-07-12T12:04:40.950Z",
 	"collection_id": "63084274-084d-4815-a8ec-136b60dd10f2",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 126,
+	"totalPass": 192,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "8ac61e92-4cf2-4fa7-9725-29e9a3f85540",
-			"name": "0.1 TestService",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/test/test",
-			"time": 13,
+			"id": "5e2a1bb9-4cb7-4424-8702-c175bedce358",
+			"name": "0.1 Login",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/user/login",
+			"time": 17,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -32,7 +32,7 @@
 				}
 			},
 			"times": [
-				13
+				17
 			],
 			"allTests": [
 				{
@@ -45,7 +45,7 @@
 			"id": "09d8799f-3849-49d3-b197-616707a34ff8",
 			"name": "1.0 List all albums",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/list",
-			"time": 19,
+			"time": 23,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -65,7 +65,7 @@
 				}
 			},
 			"times": [
-				19
+				23
 			],
 			"allTests": [
 				{
@@ -77,8 +77,8 @@
 		{
 			"id": "e5f75649-398f-4eeb-8cfe-adde91ba4db9",
 			"name": "1.1 List album with UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
-			"time": 9,
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
+			"time": 11,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -98,7 +98,7 @@
 				}
 			},
 			"times": [
-				9
+				11
 			],
 			"allTests": [
 				{
@@ -111,7 +111,7 @@
 			"id": "482f6e1d-66c6-40c4-aecd-e94f533d2e99",
 			"name": "1.1.1 List album with non existent UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ag",
-			"time": 23,
+			"time": 4,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -131,7 +131,7 @@
 				}
 			},
 			"times": [
-				23
+				4
 			],
 			"allTests": [
 				{
@@ -144,567 +144,6 @@
 			"id": "4c872233-4ce6-4b7f-91a2-53678e7452dc",
 			"name": "1.1.2 List album with wrong formal UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=L",
-			"time": 5,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status code is 410": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 410": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				5
-			],
-			"allTests": [
-				{
-					"Status code is 410": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "1e66579c-dc6a-49a7-9cdf-17053fa68b39",
-			"name": "1.2 Update album",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 16,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				16
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "eb8d089d-a2e6-43d2-bcac-bccd87a5786c",
-			"name": "1.2.1 Update album with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 9,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status code is 410": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 410": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				9
-			],
-			"allTests": [
-				{
-					"Status code is 410": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "62d4faca-8485-478d-908e-ba9884c16e7d",
-			"name": "1.2.2 Update album with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "11b01bc8-daa6-4c3b-b56e-00141d8404ce",
-			"name": "1.2.3 Update album with to short name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 30,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				30
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "04fcf536-06cb-4697-9184-2333b6b1cc78",
-			"name": "1.2.4 Update album with to long name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 26,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				26
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "f2dd9dee-5f08-4941-9b3d-083c1593072d",
-			"name": "1.2.5 Update album with wrong formal published",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
-			"time": 7,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				7
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "4556b3c1-560f-4917-a7af-39c9934acaa9",
-			"name": "1.3 Delete album with UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
-			"time": 63,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				63
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "eb502d86-9d58-4d9c-ac09-59481da5d1d6",
-			"name": "1.3.1 Delete album with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be10",
-			"time": 30,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status code is 410": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 410": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				30
-			],
-			"allTests": [
-				{
-					"Status code is 410": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "b2f7e3a0-3184-4ef3-b232-87aa5ad26b4a",
-			"name": "1.3.2 Delete album with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=L",
-			"time": 68,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				68
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "12d9820a-8024-4458-b2ec-50812d2dfda0",
-			"name": "1.4 Create album",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
-			"time": 22,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				22
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "d510f73e-f4c3-4edb-916d-15e0c0bb767e",
-			"name": "1.4.1 Create album with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
-			"time": 8,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				8
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "b6066dbd-1df3-437d-8503-c9fc65cc8996",
-			"name": "1.4.2 Create album with to short name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
-			"time": 92,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				92
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "6e4d51e1-346a-434f-99fe-7fb2c558f734",
-			"name": "1.4.3 Create album with to long name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
-			"time": 35,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				35
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "13ae7997-642f-4728-baca-edd58bfc1e4a",
-			"name": "1.4.4 Create album with wrong formal published",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
-			"time": 31,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				31
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "f0c497a9-8cb1-4391-9755-b0138d7a5b6d",
-			"name": "2.0 List all artist",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/list",
-			"time": 27,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				27
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "728f2da9-1325-41dd-829c-7ef3cffaba52",
-			"name": "2.1 List artist with UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=69660870-84bb-4487-ae6c-396572ebf8e2",
-			"time": 13,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				13
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "5f4eafeb-6f40-4900-9b82-e7a700f3a848",
-			"name": "2.1.1 List artist with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
 			"time": 6,
 			"responseCode": {
 				"code": 410,
@@ -735,43 +174,10 @@
 			]
 		},
 		{
-			"id": "7a529d3c-0ef3-4528-90cd-635d4270601b",
-			"name": "2.1.2 List artist with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=L",
-			"time": 19,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status code is 410": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 410": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				19
-			],
-			"allTests": [
-				{
-					"Status code is 410": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "85b23407-250a-47d0-b6f4-5306c2091143",
-			"name": "2.2 Update artist",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 39,
+			"id": "1e66579c-dc6a-49a7-9cdf-17053fa68b39",
+			"name": "1.2 Update album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 26,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -791,7 +197,7 @@
 				}
 			},
 			"times": [
-				39
+				26
 			],
 			"allTests": [
 				{
@@ -801,10 +207,10 @@
 			]
 		},
 		{
-			"id": "31fb123f-bb89-4f56-b14b-8d700fb72703",
-			"name": "2.2.1 Update artist with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 25,
+			"id": "eb8d089d-a2e6-43d2-bcac-bccd87a5786c",
+			"name": "1.2.1 Update album with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 17,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -824,7 +230,7 @@
 				}
 			},
 			"times": [
-				25
+				17
 			],
 			"allTests": [
 				{
@@ -834,9 +240,75 @@
 			]
 		},
 		{
-			"id": "11c95d52-d68d-45e2-8be9-51ceac95c89d",
-			"name": "2.2.2 Update artist with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"id": "62d4faca-8485-478d-908e-ba9884c16e7d",
+			"name": "1.2.2 Update album with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "11b01bc8-daa6-4c3b-b56e-00141d8404ce",
+			"name": "1.2.3 Update album with to short name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "04fcf536-06cb-4697-9184-2333b6b1cc78",
+			"name": "1.2.4 Update album with to long name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
 			"time": 16,
 			"responseCode": {
 				"code": 400,
@@ -867,10 +339,10 @@
 			]
 		},
 		{
-			"id": "8cd8186f-4e58-4998-8490-ff216c30d105",
-			"name": "2.2.3 Update artist with to short firstName",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 44,
+			"id": "f2dd9dee-5f08-4941-9b3d-083c1593072d",
+			"name": "1.2.5 Update album with wrong formal published",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 13,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -890,7 +362,535 @@
 				}
 			},
 			"times": [
-				44
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "4556b3c1-560f-4917-a7af-39c9934acaa9",
+			"name": "1.3 Delete album with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
+			"time": 71,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "eb502d86-9d58-4d9c-ac09-59481da5d1d6",
+			"name": "1.3.1 Delete album with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be10",
+			"time": 12,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "b2f7e3a0-3184-4ef3-b232-87aa5ad26b4a",
+			"name": "1.3.2 Delete album with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=L",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "12d9820a-8024-4458-b2ec-50812d2dfda0",
+			"name": "1.4 Create album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "d510f73e-f4c3-4edb-916d-15e0c0bb767e",
+			"name": "1.4.1 Create album with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 70,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "b6066dbd-1df3-437d-8503-c9fc65cc8996",
+			"name": "1.4.2 Create album with to short name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "6e4d51e1-346a-434f-99fe-7fb2c558f734",
+			"name": "1.4.3 Create album with to long name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "13ae7997-642f-4728-baca-edd58bfc1e4a",
+			"name": "1.4.4 Create album with wrong formal published",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 23,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "f0c497a9-8cb1-4391-9755-b0138d7a5b6d",
+			"name": "2.0 List all artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/list",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "728f2da9-1325-41dd-829c-7ef3cffaba52",
+			"name": "2.1 List artist with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=69660870-84bb-4487-ae6c-396572ebf8e2",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "5f4eafeb-6f40-4900-9b82-e7a700f3a848",
+			"name": "2.1.1 List artist with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=ad4ca80f-ebe3-4439-8b2c-8b290339c0ff",
+			"time": 18,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "7a529d3c-0ef3-4528-90cd-635d4270601b",
+			"name": "2.1.2 List artist with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=L",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "85b23407-250a-47d0-b6f4-5306c2091143",
+			"name": "2.2 Update artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				53
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "31fb123f-bb89-4f56-b14b-8d700fb72703",
+			"name": "2.2.1 Update artist with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 17,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "11c95d52-d68d-45e2-8be9-51ceac95c89d",
+			"name": "2.2.2 Update artist with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "8cd8186f-4e58-4998-8490-ff216c30d105",
+			"name": "2.2.3 Update artist with to short firstName",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 47,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
 			],
 			"allTests": [
 				{
@@ -902,6 +902,39 @@
 		{
 			"id": "a984b053-ad02-4082-b288-6f4050a27fed",
 			"name": "2.2.4 Update artist with to long firstName",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 47,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "255efacc-320f-4e91-94e0-059226f92da6",
+			"name": "2.2.5 Update artist with to short name",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
 			"time": 21,
 			"responseCode": {
@@ -933,43 +966,10 @@
 			]
 		},
 		{
-			"id": "255efacc-320f-4e91-94e0-059226f92da6",
-			"name": "2.2.5 Update artist with to short name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 25,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				25
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
 			"id": "a05f58b1-1c56-43b7-92a9-287e3e700cfd",
 			"name": "2.2.6 Update artist with to long name",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 73,
+			"time": 77,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -989,7 +989,7 @@
 				}
 			},
 			"times": [
-				73
+				77
 			],
 			"allTests": [
 				{
@@ -1002,7 +1002,7 @@
 			"id": "733af0c0-7b5b-4fd7-b061-ed7b9503240b",
 			"name": "2.2.7 Update artist with to short artistName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 16,
+			"time": 24,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1022,7 +1022,7 @@
 				}
 			},
 			"times": [
-				16
+				24
 			],
 			"allTests": [
 				{
@@ -1035,7 +1035,7 @@
 			"id": "cabb2f50-c1b2-47e3-b123-4deec48ac379",
 			"name": "2.2.8 Update artist with to long artistName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
-			"time": 19,
+			"time": 15,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1055,7 +1055,7 @@
 				}
 			},
 			"times": [
-				19
+				15
 			],
 			"allTests": [
 				{
@@ -1101,7 +1101,7 @@
 			"id": "33ceef6e-68d6-4d42-a6f1-93e735b5420c",
 			"name": "2.3 Delete artist with UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=737f2009-38e6-4a06-85c7-1df8166caff2",
-			"time": 12,
+			"time": 53,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1121,7 +1121,7 @@
 				}
 			},
 			"times": [
-				12
+				53
 			],
 			"allTests": [
 				{
@@ -1134,7 +1134,7 @@
 			"id": "59488a14-a0d1-491f-981c-18799b905e9b",
 			"name": "2.3.1 Delete artist with wrong non existent UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=69660870-84bb-4487-ae6c-396572ebf8e1",
-			"time": 5,
+			"time": 11,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -1154,7 +1154,7 @@
 				}
 			},
 			"times": [
-				5
+				11
 			],
 			"allTests": [
 				{
@@ -1167,7 +1167,7 @@
 			"id": "9426d22a-56b5-457d-9a83-16d62dbd5744",
 			"name": "2.3.2 Delete artist with wrong formal UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=L",
-			"time": 22,
+			"time": 10,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1187,7 +1187,7 @@
 				}
 			},
 			"times": [
-				22
+				10
 			],
 			"allTests": [
 				{
@@ -1200,7 +1200,7 @@
 			"id": "b4d60a12-fe55-4a2e-8be9-525a6ad54fa8",
 			"name": "2.4 Create artist",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 26,
+			"time": 44,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1220,7 +1220,7 @@
 				}
 			},
 			"times": [
-				26
+				44
 			],
 			"allTests": [
 				{
@@ -1233,7 +1233,7 @@
 			"id": "0a7e4504-9a6f-4478-b8e8-bec08be462ba",
 			"name": "2.4.1 Create artist with wrong formal UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 49,
+			"time": 15,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1253,7 +1253,7 @@
 				}
 			},
 			"times": [
-				49
+				15
 			],
 			"allTests": [
 				{
@@ -1266,7 +1266,7 @@
 			"id": "d00dc804-cd32-45fb-8f70-145c746a39bd",
 			"name": "2.4.2 Create artist with to short firstName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 26,
+			"time": 13,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1286,7 +1286,7 @@
 				}
 			},
 			"times": [
-				26
+				13
 			],
 			"allTests": [
 				{
@@ -1299,7 +1299,7 @@
 			"id": "72b52858-3845-4004-8750-10f0ec69c71e",
 			"name": "2.4.3 Create artist with to long firstName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 47,
+			"time": 10,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1319,7 +1319,7 @@
 				}
 			},
 			"times": [
-				47
+				10
 			],
 			"allTests": [
 				{
@@ -1332,7 +1332,7 @@
 			"id": "fea34513-bb82-4f60-9ab4-c1c6c24462b8",
 			"name": "2.4.4 Create artist with to short name",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 54,
+			"time": 36,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1352,7 +1352,7 @@
 				}
 			},
 			"times": [
-				54
+				36
 			],
 			"allTests": [
 				{
@@ -1365,7 +1365,7 @@
 			"id": "90919919-b570-4523-a420-29b502d6eb3e",
 			"name": "2.4.5 Create artist with to long name",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 24,
+			"time": 34,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1385,7 +1385,7 @@
 				}
 			},
 			"times": [
-				24
+				34
 			],
 			"allTests": [
 				{
@@ -1398,7 +1398,7 @@
 			"id": "a965ea01-c763-4534-93be-dda25afa530b",
 			"name": "2.4.6 Create artist with to short artistName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 22,
+			"time": 19,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1418,7 +1418,7 @@
 				}
 			},
 			"times": [
-				22
+				19
 			],
 			"allTests": [
 				{
@@ -1431,7 +1431,7 @@
 			"id": "fd99eca8-9608-4eff-a5d7-c7ce02b57098",
 			"name": "2.4.7 Create artist with to long artistName",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 58,
+			"time": 20,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1451,7 +1451,7 @@
 				}
 			},
 			"times": [
-				58
+				20
 			],
 			"allTests": [
 				{
@@ -1464,7 +1464,7 @@
 			"id": "a5dc6e9c-f9b8-4862-ac5c-2f12e0b33baa",
 			"name": "2.4.8 Create artist with wrong formal dateOfBirth",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
-			"time": 22,
+			"time": 12,
 			"responseCode": {
 				"code": 400,
 				"name": "Bad Request"
@@ -1484,7 +1484,7 @@
 				}
 			},
 			"times": [
-				22
+				12
 			],
 			"allTests": [
 				{
@@ -1497,39 +1497,6 @@
 			"id": "ff0d2e4a-100d-482f-b721-d36301b0be79",
 			"name": "3.0 List all songs",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/list",
-			"time": 25,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status code is 200": true,
-				"Content-Type header is application/json": true
-			},
-			"testPassFailCounts": {
-				"Status code is 200": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is application/json": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				25
-			],
-			"allTests": [
-				{
-					"Status code is 200": true,
-					"Content-Type header is application/json": true
-				}
-			]
-		},
-		{
-			"id": "6582070b-9d85-404c-8398-fe59020b716f",
-			"name": "3.1 List song with UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
 			"time": 20,
 			"responseCode": {
 				"code": 200,
@@ -1560,10 +1527,43 @@
 			]
 		},
 		{
+			"id": "6582070b-9d85-404c-8398-fe59020b716f",
+			"name": "3.1 List song with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
 			"id": "58f992ea-cdad-480e-a5a0-375d05135c71",
 			"name": "3.1.1 List song with non existent UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=498b1e53-8f68-4180-929c-1ae1bea60d10",
-			"time": 28,
+			"time": 46,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -1583,7 +1583,7 @@
 				}
 			},
 			"times": [
-				28
+				46
 			],
 			"allTests": [
 				{
@@ -1596,7 +1596,7 @@
 			"id": "d17c4bcb-8ee1-48be-b8ce-c68c9cf26065",
 			"name": "3.1.2 List song with wrong formal UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=L",
-			"time": 7,
+			"time": 56,
 			"responseCode": {
 				"code": 410,
 				"name": "Gone"
@@ -1616,7 +1616,7 @@
 				}
 			},
 			"times": [
-				7
+				56
 			],
 			"allTests": [
 				{
@@ -1629,7 +1629,7 @@
 			"id": "7eab67f2-7021-4d56-9ad2-becdbf08a14a",
 			"name": "3.2 Update song",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 19,
+			"time": 25,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1640,6 +1640,996 @@
 			},
 			"testPassFailCounts": {
 				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "9eeea851-e77f-4d46-9ea7-e892a2c1137a",
+			"name": "3.2.1 Update song with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 18,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "b947921c-4960-49ca-bb7e-0f63eda0b68d",
+			"name": "3.2.2 Update song with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 16,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "e71de270-3045-480d-9733-1c57039589a9",
+			"name": "3.2.3 Update song with to short name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 22,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "d1401b11-86e0-44ec-b5e8-8b11b5a091af",
+			"name": "3.2.4 Update song with to long name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "a135c0ea-0f55-41fc-8f7a-22103ba3fb6a",
+			"name": "3.2.5 Update song with wrong formal published",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "eaceca91-4106-4fce-bcc5-d7caed3f6b7b",
+			"name": "3.3 Delete song with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "1f189160-2d03-4a06-9c01-6f3d16fcac4f",
+			"name": "3.3.1 Delete song with non existent UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcdd",
+			"time": 14,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status code is 410": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 410": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 410": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "9bc418ec-640a-48ce-a4a3-a513fbbd4b1f",
+			"name": "3.3.2 Delete song with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=L",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "40a2cbc9-6822-4254-9d19-ea913e2c9019",
+			"name": "3.4 Create song",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "b0d38c77-97c5-4a76-a2a0-8bd0fc918671",
+			"name": "3.4.1 Create song with wrong formal UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 20,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "e100271b-9b0e-48c6-932f-afae674f78a8",
+			"name": "3.4.2 Create song with to short name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 71,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "2ba5d131-f5cd-45b7-a8f3-c653af0dbadc",
+			"name": "3.4.3 Create song with to long name",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 53,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				53
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "ffefc1d1-9cea-44ae-a0c2-e630e1d335fd",
+			"name": "3.4.4 Create song with wrong formal published",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 61,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Content-Type header is text/html": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/html": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				61
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Content-Type header is text/html": true
+				}
+			]
+		},
+		{
+			"id": "236851a6-47c2-4dba-9ecb-8f32bd274486",
+			"name": "0.1 Login",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/user/login",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "5b875fe2-c761-40f0-884d-186eb300f1f3",
+			"name": "1.0 List all albums",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/list",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "96ed588c-c8a1-49cc-8336-72cc62592e1a",
+			"name": "1.1 List album with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "13ca387b-d024-43b5-83d3-bd7bb960b0ae",
+			"name": "1.2 Update album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "ea8a25cc-ab83-4d73-88c3-5866a3d558de",
+			"name": "1.3 Delete album with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
+			"time": 7,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "dde95270-48b1-4b9f-82ad-e1f06ec7a78b",
+			"name": "1.4 Create album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 39,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "cc47a715-db1b-4582-aa31-74d377107f96",
+			"name": "2.0 List all artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/list",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "f253ddb6-294b-405d-bc3c-7e7978a63575",
+			"name": "2.1 List artist with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=69660870-84bb-4487-ae6c-396572ebf8e2",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "6ac095e8-6d95-40f4-a980-2a833ad75a30",
+			"name": "2.2 Update artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "7abcb56a-5128-438c-920d-cc259d297b0e",
+			"name": "2.3 Delete artist with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=737f2009-38e6-4a06-85c7-1df8166caff2",
+			"time": 16,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "5b14f4db-c4ab-4969-970b-760bdbe372aa",
+			"name": "2.4 Create artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "17817a2a-d514-4897-a276-a0dfbf7726ef",
+			"name": "3.0 List all songs",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/list",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "84dfdee1-8e13-403d-9a5b-fa4aec19e775",
+			"name": "3.1 List song with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "27a6ae6d-66eb-4087-ac06-8f24218a3905",
+			"name": "3.2 Update song",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "9f3d03e3-5ba8-4f38-a2d5-6468bc703b14",
+			"name": "3.3 Delete song with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+			"time": 16,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "88b13cf8-d0b7-40f9-9fb3-38130f619e47",
+			"name": "3.4 Create song",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "329c261e-0690-44af-a137-c487b007c40e",
+			"name": "0.1 Login",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/user/login",
+			"time": 19,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
 					"pass": 1,
 					"fail": 0
 				},
@@ -1653,30 +2643,195 @@
 			],
 			"allTests": [
 				{
-					"Status code is 200": true,
+					"Status code is 404": true,
 					"Content-Type header is text/plain": true
 				}
 			]
 		},
 		{
-			"id": "9eeea851-e77f-4d46-9ea7-e892a2c1137a",
-			"name": "3.2.1 Update song with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 7,
+			"id": "8c5ea3fa-9ca1-4b4d-aac1-a6dc8e2a34bf",
+			"name": "1.0 List all albums",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/list",
+			"time": 16,
 			"responseCode": {
-				"code": 410,
-				"name": "Gone"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 410": true,
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "a383ac1d-fdba-429d-b156-6ba33e23e860",
+			"name": "1.1 List album with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/read?uuid=43a5f5b4-32ac-4fec-97a3-6adca452f4ff",
+			"time": 15,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "9668c92a-0847-4fe0-8d83-464855a92d6a",
+			"name": "1.2 Update album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/update",
+			"time": 8,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
 				"Content-Type header is text/plain": true
 			},
 			"testPassFailCounts": {
-				"Status code is 410": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
 				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "14c5db84-c3cc-413f-aef0-d033c048d794",
+			"name": "1.3 Delete album with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/delete?uuid=7370bed9-b941-4448-bc52-ff1be2e6be69",
+			"time": 8,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "812ab696-b534-4d9f-b5d2-ee7a72f48c21",
+			"name": "1.4 Create album",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/album/create",
+			"time": 15,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "cb9298c6-1129-4241-9578-985072e8c716",
+			"name": "2.0 List all artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/list",
+			"time": 7,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -1686,158 +2841,257 @@
 			],
 			"allTests": [
 				{
-					"Status code is 410": true,
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "121ddcac-599d-4716-bec2-e58f50fae5c1",
+			"name": "2.1 List artist with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/read?uuid=69660870-84bb-4487-ae6c-396572ebf8e2",
+			"time": 25,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
+				}
+			]
+		},
+		{
+			"id": "0f6db8dc-2cad-4ad6-b589-9711e4624739",
+			"name": "2.2 Update artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/update",
+			"time": 24,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				24
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
 					"Content-Type header is text/plain": true
 				}
 			]
 		},
 		{
-			"id": "b947921c-4960-49ca-bb7e-0f63eda0b68d",
-			"name": "3.2.2 Update song with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 37,
+			"id": "ca58127b-0f72-4ae6-8abd-850b083c55fb",
+			"name": "2.3 Delete artist with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/delete?uuid=737f2009-38e6-4a06-85c7-1df8166caff2",
+			"time": 43,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Content-Type header is text/html": {
+				"Content-Type header is text/plain": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				37
+				43
 			],
 			"allTests": [
 				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
 				}
 			]
 		},
 		{
-			"id": "e71de270-3045-480d-9733-1c57039589a9",
-			"name": "3.2.3 Update song with to short name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 68,
+			"id": "86bd55ab-e86f-4dc1-99a6-be9780b7e3fe",
+			"name": "2.4 Create artist",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/artist/create",
+			"time": 17,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Content-Type header is text/html": {
+				"Content-Type header is text/plain": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				68
+				17
 			],
 			"allTests": [
 				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
 				}
 			]
 		},
 		{
-			"id": "d1401b11-86e0-44ec-b5e8-8b11b5a091af",
-			"name": "3.2.4 Update song with to long name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 20,
+			"id": "c20bf132-c10f-412e-b23f-8da40480ba41",
+			"name": "3.0 List all songs",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/list",
+			"time": 17,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Content-Type header is text/html": {
+				"Content-Type header is application/json": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				20
+				17
 			],
 			"allTests": [
 				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
 				}
 			]
 		},
 		{
-			"id": "a135c0ea-0f55-41fc-8f7a-22103ba3fb6a",
-			"name": "3.2.5 Update song with wrong formal published",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
-			"time": 77,
+			"id": "1b7e02ab-ca4b-4da4-9bc3-fecb965eb923",
+			"name": "3.1 List song with UUID",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/read?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
+			"time": 36,
 			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
+				"Status code is 401": true,
+				"Content-Type header is application/json": true
 			},
 			"testPassFailCounts": {
-				"Status code is 400": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
-				"Content-Type header is text/html": {
+				"Content-Type header is application/json": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				77
+				36
 			],
 			"allTests": [
 				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
+					"Status code is 401": true,
+					"Content-Type header is application/json": true
 				}
 			]
 		},
 		{
-			"id": "eaceca91-4106-4fce-bcc5-d7caed3f6b7b",
+			"id": "c34a8a83-6e71-4e60-a5ce-aeb284e73733",
+			"name": "3.2 Update song",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/update",
+			"time": 16,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "a2e15a95-9f2d-4aeb-8e7a-f09f7851074e",
 			"name": "3.3 Delete song with UUID",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcda",
-			"time": 26,
+			"time": 29,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 401,
+				"name": "Unauthorized"
 			},
 			"tests": {
-				"Status code is 200": true,
+				"Status code is 401": true,
 				"Content-Type header is text/plain": true
 			},
 			"testPassFailCounts": {
-				"Status code is 200": {
+				"Status code is 401": {
 					"pass": 1,
 					"fail": 0
 				},
@@ -1847,86 +3101,53 @@
 				}
 			},
 			"times": [
-				26
+				29
 			],
 			"allTests": [
 				{
-					"Status code is 200": true,
+					"Status code is 401": true,
 					"Content-Type header is text/plain": true
 				}
 			]
 		},
 		{
-			"id": "1f189160-2d03-4a06-9c01-6f3d16fcac4f",
-			"name": "3.3.1 Delete song with non existent UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=37be1529-ffd7-41c7-a62c-5735bfaafcdd",
-			"time": 6,
-			"responseCode": {
-				"code": 410,
-				"name": "Gone"
-			},
-			"tests": {
-				"Status code is 410": true,
-				"Content-Type header is text/plain": true
-			},
-			"testPassFailCounts": {
-				"Status code is 410": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/plain": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status code is 410": true,
-					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "9bc418ec-640a-48ce-a4a3-a513fbbd4b1f",
-			"name": "3.3.2 Delete song with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/delete?uuid=L",
-			"time": 14,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				14
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "40a2cbc9-6822-4254-9d19-ea913e2c9019",
+			"id": "becf0e9b-a59a-48e3-8a20-866accff673a",
 			"name": "3.4 Create song",
 			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
-			"time": 73,
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Content-Type header is text/plain": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is text/plain": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Content-Type header is text/plain": true
+				}
+			]
+		},
+		{
+			"id": "8ac61e92-4cf2-4fa7-9725-29e9a3f85540",
+			"name": "0.1 TestService",
+			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/test/test",
+			"time": 8,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -1946,155 +3167,23 @@
 				}
 			},
 			"times": [
-				73
+				8
 			],
 			"allTests": [
 				{
 					"Status code is 200": true,
 					"Content-Type header is text/plain": true
-				}
-			]
-		},
-		{
-			"id": "b0d38c77-97c5-4a76-a2a0-8bd0fc918671",
-			"name": "3.4.1 Create song with wrong formal UUID",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
-			"time": 35,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				35
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "e100271b-9b0e-48c6-932f-afae674f78a8",
-			"name": "3.4.2 Create song with to short name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
-			"time": 38,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				38
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "2ba5d131-f5cd-45b7-a8f3-c653af0dbadc",
-			"name": "3.4.3 Create song with to long name",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
-			"time": 21,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				21
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
-				}
-			]
-		},
-		{
-			"id": "ffefc1d1-9cea-44ae-a0c2-e630e1d335fd",
-			"name": "3.4.4 Create song with wrong formal published",
-			"url": "http://localhost:8080/Fanpage-1.0-Fanpage/resource/song/create",
-			"time": 6,
-			"responseCode": {
-				"code": 400,
-				"name": "Bad Request"
-			},
-			"tests": {
-				"Status code is 400": true,
-				"Content-Type header is text/html": true
-			},
-			"testPassFailCounts": {
-				"Status code is 400": {
-					"pass": 1,
-					"fail": 0
-				},
-				"Content-Type header is text/html": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				6
-			],
-			"allTests": [
-				{
-					"Status code is 400": true,
-					"Content-Type header is text/html": true
 				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 1763,
+	"totalTime": 2348,
 	"collection": {
 		"requests": [
 			{
-				"id": "8ac61e92-4cf2-4fa7-9725-29e9a3f85540",
-				"method": "GET"
+				"id": "5e2a1bb9-4cb7-4424-8702-c175bedce358",
+				"method": "POST"
 			},
 			{
 				"id": "09d8799f-3849-49d3-b197-616707a34ff8",
@@ -2343,6 +3432,138 @@
 			{
 				"id": "ffefc1d1-9cea-44ae-a0c2-e630e1d335fd",
 				"method": "POST"
+			},
+			{
+				"id": "236851a6-47c2-4dba-9ecb-8f32bd274486",
+				"method": "POST"
+			},
+			{
+				"id": "5b875fe2-c761-40f0-884d-186eb300f1f3",
+				"method": "GET"
+			},
+			{
+				"id": "96ed588c-c8a1-49cc-8336-72cc62592e1a",
+				"method": "GET"
+			},
+			{
+				"id": "13ca387b-d024-43b5-83d3-bd7bb960b0ae",
+				"method": "PUT"
+			},
+			{
+				"id": "ea8a25cc-ab83-4d73-88c3-5866a3d558de",
+				"method": "DELETE"
+			},
+			{
+				"id": "dde95270-48b1-4b9f-82ad-e1f06ec7a78b",
+				"method": "POST"
+			},
+			{
+				"id": "cc47a715-db1b-4582-aa31-74d377107f96",
+				"method": "GET"
+			},
+			{
+				"id": "f253ddb6-294b-405d-bc3c-7e7978a63575",
+				"method": "GET"
+			},
+			{
+				"id": "6ac095e8-6d95-40f4-a980-2a833ad75a30",
+				"method": "PUT"
+			},
+			{
+				"id": "7abcb56a-5128-438c-920d-cc259d297b0e",
+				"method": "DELETE"
+			},
+			{
+				"id": "5b14f4db-c4ab-4969-970b-760bdbe372aa",
+				"method": "POST"
+			},
+			{
+				"id": "17817a2a-d514-4897-a276-a0dfbf7726ef",
+				"method": "GET"
+			},
+			{
+				"id": "84dfdee1-8e13-403d-9a5b-fa4aec19e775",
+				"method": "GET"
+			},
+			{
+				"id": "27a6ae6d-66eb-4087-ac06-8f24218a3905",
+				"method": "PUT"
+			},
+			{
+				"id": "9f3d03e3-5ba8-4f38-a2d5-6468bc703b14",
+				"method": "DELETE"
+			},
+			{
+				"id": "88b13cf8-d0b7-40f9-9fb3-38130f619e47",
+				"method": "POST"
+			},
+			{
+				"id": "329c261e-0690-44af-a137-c487b007c40e",
+				"method": "POST"
+			},
+			{
+				"id": "8c5ea3fa-9ca1-4b4d-aac1-a6dc8e2a34bf",
+				"method": "GET"
+			},
+			{
+				"id": "a383ac1d-fdba-429d-b156-6ba33e23e860",
+				"method": "GET"
+			},
+			{
+				"id": "9668c92a-0847-4fe0-8d83-464855a92d6a",
+				"method": "PUT"
+			},
+			{
+				"id": "14c5db84-c3cc-413f-aef0-d033c048d794",
+				"method": "DELETE"
+			},
+			{
+				"id": "812ab696-b534-4d9f-b5d2-ee7a72f48c21",
+				"method": "POST"
+			},
+			{
+				"id": "cb9298c6-1129-4241-9578-985072e8c716",
+				"method": "GET"
+			},
+			{
+				"id": "121ddcac-599d-4716-bec2-e58f50fae5c1",
+				"method": "GET"
+			},
+			{
+				"id": "0f6db8dc-2cad-4ad6-b589-9711e4624739",
+				"method": "PUT"
+			},
+			{
+				"id": "ca58127b-0f72-4ae6-8abd-850b083c55fb",
+				"method": "DELETE"
+			},
+			{
+				"id": "86bd55ab-e86f-4dc1-99a6-be9780b7e3fe",
+				"method": "POST"
+			},
+			{
+				"id": "c20bf132-c10f-412e-b23f-8da40480ba41",
+				"method": "GET"
+			},
+			{
+				"id": "1b7e02ab-ca4b-4da4-9bc3-fecb965eb923",
+				"method": "GET"
+			},
+			{
+				"id": "c34a8a83-6e71-4e60-a5ce-aeb284e73733",
+				"method": "PUT"
+			},
+			{
+				"id": "a2e15a95-9f2d-4aeb-8e7a-f09f7851074e",
+				"method": "DELETE"
+			},
+			{
+				"id": "becf0e9b-a59a-48e3-8a20-866accff673a",
+				"method": "POST"
+			},
+			{
+				"id": "8ac61e92-4cf2-4fa7-9725-29e9a3f85540",
+				"method": "GET"
 			}
 		]
 	}
